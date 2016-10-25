@@ -118,3 +118,36 @@ func (pb *Pushbullet) postPushes(p interface{}) (*http.Response, error) {
 
 	return res, nil
 }
+
+// Get list pushes
+func (pb *Pushbullet) GetListPushes() ([]*responses.Push, error) {
+	req, err := http.NewRequest("GET", ENDPOINT_PUSHES, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	req.SetBasicAuth(pb.token, "")
+
+	res, err := pb.client.Do(req)
+	if err != nil {
+		return nil, err
+	}
+
+	// TODO: Return an error value with human friendly message.
+	if res.StatusCode != 200 {
+		return nil, errors.New(res.Status)
+	}
+
+	var pushes *pushsResponse
+
+	decoder := json.NewDecoder(res.Body)
+	if err := decoder.Decode(&pushes); err != nil {
+		return nil, err
+	}
+
+	return pushes.Pushes, nil
+}
+
+type pushsResponse struct {
+	Pushes []*responses.Push `json:"pushes"`
+}

@@ -5,17 +5,19 @@ import (
 )
 
 type Push struct {
-	Iden                    string  `json:"iden"`
-	Created                 float64 `json:"created"`
-	Modified                float64 `json:"modified"`
 	Active                  bool    `json:"active"`
+	Body                    string  `json:"body"`
+	Created                 float64 `json:"created"`
+	Direction               string  `json:"direction"`
 	Dismissed               bool    `json:"dismissed"`
-	SenderIden              string  `json:"sender_iden"`
-	SenderEmail             string  `json:"sender_email"`
-	SenderEmailNormalized   string  `json:"sender_email_normalized"`
-	RecieverIden            string  `json:"reciever_iden"`
+	Iden                    string  `json:"iden"`
+	Modified                float64 `json:"modified"`
 	RecieverEmail           string  `json:"reciever_email"`
 	RecieverEmailNormalized string  `json:"reciever_email_normalized"`
+	RecieverIden            string  `json:"reciever_iden"`
+	SenderName              string  `json:"sender_name"`
+	Title                   string  `json:"title"`
+	Type                    string  `json:"type"`
 }
 
 type Note struct {
