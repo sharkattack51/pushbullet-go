@@ -6,8 +6,8 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/mitsuse/pushbullet-go/requests"
-	"github.com/mitsuse/pushbullet-go/responses"
+	"github.com/sharkattack51/pushbullet-go/requests"
+	"github.com/sharkattack51/pushbullet-go/responses"
 )
 
 // Push a note, which consists of "title" and "message" strings.
